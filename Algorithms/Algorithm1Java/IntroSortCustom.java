@@ -4,11 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-
-
 public class IntroSortCustom {
     private int arr[]; // acts as the array that will be sorted
-    private int n;
+    private int n; // size
 
     IntroSortCustom(int n) {
         arr = new int[n];
@@ -20,6 +18,7 @@ public class IntroSortCustom {
         n++;
     }
 
+    // swaps between to elements
     private void swap(int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];
@@ -140,7 +139,7 @@ public class IntroSortCustom {
         return arr;
     }
     public static void main(String[] args) {
-        List<Integer> arr = createArray(10);
+        List<Integer> arr = createArray(10);;
 
         int array[] = new int[arr.size()];
         int size = arr.size();
