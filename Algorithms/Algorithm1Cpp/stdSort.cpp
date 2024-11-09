@@ -2,21 +2,19 @@
 #include <vector>
 #include <algorithm>
 #include <chrono>
+#include <random>
+#include <ctime>
 
-// generates a pseudorandom number using the mersine twister algorithm 
-template<typename T>
-T random(T rangeFrom, T rangeTo) {
-    std::random_device rd;
-    std::mt19937 generator(rd());
-    std::uniform_int_distribution distribute(rangeFrom, rangeTo);
-    return distribute(generator);
-}
+// generates a pseudorandom number using rand function
+int random(int n) {
+    return rand() % (n + 1);
+} 
 
 // creates a dynamic array of n size with random in bound elements for the sortering
-std::vector<int> createArray(int size, int random) {
+std::vector<int> createArray(int size) {
     std::vector<int> array(size);
     for (int i = 0; i < array.size(); ++i) {
-        array.at(i) = random;
+        array.at(i) = random(1000);
     }
     return array;
 }
@@ -25,7 +23,7 @@ int main() {
     // timer start
     auto start = std::chrono::high_resolution_clock::now();
     // initialize array of whatever given size
-    std::vector<int> arr = createArray(1000, random(0, 1000));
+    std::vector<int> arr = createArray(1000);
     // the sorting
     std::sort(arr.begin(), arr.end());
 

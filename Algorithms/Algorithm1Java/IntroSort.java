@@ -19,11 +19,15 @@ public class IntroSort {
         return arr;
     }
     public static void main(String[] args) {
+        long start = System.currentTimeMillis();
         List<Integer> arr = createArray(10);
 
         // the sorting
         Collections.sort(arr);
-
+        long end = System.currentTimeMillis();
+        float millisec = (end - start);
+        
         System.out.println("Sorted array: " + arr);
+        System.out.println("Time taken" + millisec + "Ms");
     }
 }

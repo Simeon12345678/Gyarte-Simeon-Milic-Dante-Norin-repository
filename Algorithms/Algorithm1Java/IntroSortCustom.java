@@ -148,15 +148,19 @@ public class IntroSortCustom {
             array[i] = arr.get(i);
         }
 
+        long start = System.currentTimeMillis();
         IntroSortCustom introSort = new IntroSortCustom(size);
         for (int i = 0; i < size; i++) {
             introSort.append(array[i]);
         }
 
         introSort.introSort();
+        long end = System.currentTimeMillis();
+        float millisec = (end - start);
         System.out.println("Sorted array: ");
         for (int i : array) {
             System.out.println(" + " + array[i]);
         }
+        System.out.println("Time taken " + millisec + "Ms");
     }
 }

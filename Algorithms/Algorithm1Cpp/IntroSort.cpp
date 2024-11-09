@@ -1,22 +1,20 @@
 #include <iostream>
 #include <vector>
+#include <cmath>
+#include <random>
 #include <algorithm>
 #include <chrono>
 
-// generates a pseudorandom number using the mersine twister algorithm 
-template<typename T>
-T random(T rangeFrom, T rangeTo) {
-    std::random_device rd;
-    std::mt19937 generator(rd());
-    std::uniform_int_distribution distribute(rangeFrom, rangeTo);
-    return distribute(generator);
-}
+// generates a pseudorandom number using rand function
+int random(int n) {
+    return rand() % (n + 1);
+} 
 
 // creates a dynamic array of n size with random in bound elements for the sortering
-std::vector<int> createArray(int size, int random) {
+std::vector<int> createArray(int size) {
     std::vector<int> array(size);
     for (int i = 0; i < array.size(); ++i) {
-        array.at(i) = random;
+        array.at(i) = random(1000);
     }
     return array;
 }
@@ -61,7 +59,7 @@ int* partition(int arr[], int low, int high) {
 
 // function used to find middle value of pointed by pointers a, b and c
 // not the best implementation but it will have to do.
-int *medianOfThree(int* a, int* b, int* c) {
+int* medianOfThree(int* a, int* b, int* c) {
     if (*a < *b && *b < *c) 
         return (b); 
   
@@ -116,7 +114,7 @@ int main() {
     // timer start
     auto start = std::chrono::high_resolution_clock::now();
     // initialize array of whatever given size
-    std::vector<int> arr = createArray(1000, random(0, 1000)); // switch during testing
+    std::vector<int> arr = createArray(1000); // switch during testing
 
     int convertedArray[1000]; // switch during testing
 
